@@ -1,0 +1,16 @@
+{
+  "name": "generative-sketches",
+  "version": "1.0.0",
+  "description": "Generative art with canvas-sketch",
+  "main": "index.js",
+  "author": "caleb.peterson@cubicle6.com",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "canvas-sketch-cli": "^1.11.14",
+    "canvas-sketch-util": "^1.10.0",
+    "canvas-sketch": "^0.7.4"
+  },
+  "dependencies": {
+  }
+}
