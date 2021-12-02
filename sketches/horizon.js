@@ -1,6 +1,5 @@
 import canvasSketch from "canvas-sketch";
 import { noise1D, noise2D, permuteNoise } from "canvas-sketch-util/random";
-import createRandomPoint from "../utils/createRandomPoint";
 import createRandomPointWithin from "../utils/createRandomPointWithin";
 import distance from "../utils/distance";
 import forEachPixel from "../utils/forEachPixel";
@@ -98,16 +97,19 @@ const sketch = () => {
     context.lineWidth = 5;
     context.shadowBlur = 10;
 
-    context.strokeStyle = "#ff0000";
-    context.shadowColor = "#ff0000";
+    // Cyan triangle variation
+    context.strokeStyle = "#ff0040";
+    context.shadowColor = "#ff0040";
     strokePath(context, [v0, v1, v2], { variance: 20 });
 
-    context.strokeStyle = "#00ffff";
-    context.shadowColor = "#00ffff";
+    // Red triangle variation
+    context.strokeStyle = "#0fc";
+    context.shadowColor = "#0fc";
     strokePath(context, [v0, v1, v2], { variance: 20 });
 
-    context.strokeStyle = "#FFFFFF";
-    context.shadowColor = "#FFFFFF";
+    // White triangle
+    context.strokeStyle = "#ffffff";
+    context.shadowColor = "#ffffff";
     strokePath(context, [v0, v1, v2]);
 
     context.shadowColor = null;
