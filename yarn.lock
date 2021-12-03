@@ -1111,7 +1111,7 @@ commander@2.17.x:
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.17.1.tgz#bd77ab7de6de94205ceacc72f1716d29f20a77bf"
   integrity sha512-wPMUt6FnH2yzG95SA6mzjQOEKUU3aLaDEmzs1ti+1E9h+CsrZghRlqEM/EJ4KscsQVG8uNN4uVreUeT8+drlgg==
 
-commander@^2.15.1, commander@^2.19.0:
+commander@^2.15.1, commander@^2.17.1, commander@^2.19.0:
   version "2.20.3"
   resolved "https://registry.yarnpkg.com/commander/-/commander-2.20.3.tgz#fd485e84c03eb4881c20722ba48035e8531aeb33"
   integrity sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==
@@ -2753,6 +2753,13 @@ loose-envify@^1.0.0, loose-envify@^1.4.0:
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
 
+lorem-ipsum@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/lorem-ipsum/-/lorem-ipsum-2.0.4.tgz#5feedb37a14e9cb96c3e994d4a2edd4cb0c299db"
+  integrity sha512-TD+ERYfxjYiUfOyaKU6OH4euumNVeKoo3BxIhokb7bGmoCULsME48onF9NVxYK3CU1z9L5ALnkDkW8lIkHvMNQ==
+  dependencies:
+    commander "^2.17.1"
+
 lower-case@^1.1.1:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/lower-case/-/lower-case-1.1.4.tgz#9a2cabd1b9e8e0ae993a4bf7d5875c39c42e8eac"
@@ -2916,6 +2923,11 @@ module-deps@^6.2.3:
     subarg "^1.0.0"
     through2 "^2.0.0"
     xtend "^4.0.0"
+
+morsee@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/morsee/-/morsee-1.0.9.tgz#56040e46ef64323f687ff1537e247733c3e3a5a9"
+  integrity sha512-8X8jKVUmZBHKpET9Ap6FPiwlAAASvv60M1K25/YwCU7veuj5MfYgaWX3oEPHtMGgC44IIkIKzyD73fduEKB/9g==
 
 ms@2.0.0:
   version "2.0.0"

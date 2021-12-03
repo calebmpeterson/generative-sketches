@@ -1,9 +1,12 @@
 import canvasSketch from "canvas-sketch";
 import { noise1D, noise2D, permuteNoise } from "canvas-sketch-util/random";
+import { loremIpsum as lipsum } from "lorem-ipsum";
+
 import createRandomPointWithin from "../utils/createRandomPointWithin";
 import distance from "../utils/distance";
 import forEachPixel from "../utils/forEachPixel";
 import forEachRow from "../utils/forEachRow";
+import generateMorse from "../utils/generateMorse";
 import strokePath from "../utils/strokePath";
 
 const settings = {
@@ -73,6 +76,12 @@ const sketch = () => {
       context.fillStyle = `rgba(0,48,32,${alpha * noise})`;
       context.fillRect(x, y, 1, 1);
     });
+
+    // Add some text
+    context.fillStyle = "#8fd8";
+    context.fillText(generateMorse(20), 0, height / 2 - 5);
+    context.fillText(generateMorse(20), 0, height / 2);
+    context.fillText(generateMorse(20), 0, height / 2 + 5);
 
     // Make a random triangle
     const v0 = createRandomPointWithin(
