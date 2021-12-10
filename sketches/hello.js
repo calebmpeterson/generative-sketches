@@ -5,7 +5,7 @@ import forEachPixel from "../utils/forEachPixel";
 import forEachRow from "../utils/forEachRow";
 
 const settings = {
-  dimensions: [1024, 768],
+  dimensions: [4096, 2160],
 };
 
 const sketch = () => {

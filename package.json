@@ -10,6 +10,7 @@
     "canvas-sketch": "^0.7.4",
     "canvas-sketch-cli": "^1.11.14",
     "canvas-sketch-util": "^1.10.0",
+    "lodash": "^4.17.21",
     "lorem-ipsum": "^2.0.4",
     "morsee": "^1.0.9"
   },

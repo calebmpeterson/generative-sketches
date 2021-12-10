@@ -1,13 +1,11 @@
 import canvasSketch from "canvas-sketch";
+import _ from "lodash";
 import { noise1D, noise2D, permuteNoise } from "canvas-sketch-util/random";
-import { loremIpsum as lipsum } from "lorem-ipsum";
 
 import createRandomPointWithin from "../utils/createRandomPointWithin";
 import distance from "../utils/distance";
 import forEachPixel from "../utils/forEachPixel";
 import forEachRow from "../utils/forEachRow";
-import generateMorse from "../utils/generateMorse";
-import strokePath from "../utils/strokePath";
 
 const settings = {
   dimensions: [1024, 768],
@@ -77,49 +75,51 @@ const sketch = () => {
       context.fillRect(x, y, 1, 1);
     });
 
-    // Add some text
-    context.fillStyle = "#8fd8";
-    context.fillText(generateMorse(20), 0, height / 2 - 5);
-    context.fillText(generateMorse(20), 0, height / 2);
-    context.fillText(generateMorse(20), 0, height / 2 + 5);
+    // Make some random circles
+    context.lineWidth = 2;
 
-    // Make a random triangle
-    const v0 = createRandomPointWithin(
-      width * 0.3,
-      height * 0.3,
-      width * 0.5,
-      height * 0.5
-    );
-    const v1 = createRandomPointWithin(
-      width * 0.5,
-      height * 0.3,
-      width * 0.8,
-      height * 0.5
-    );
-    const v2 = createRandomPointWithin(
-      width * 0.45,
-      height * 0.6,
-      width * 0.55,
-      height * 0.8
-    );
+    _.range(0, 1).forEach((index) => {
+      permuteNoise();
+      const center = createRandomPointWithin(
+        width * 0.1,
+        height * 0.4,
+        width * 0.9,
+        height * 0.6
+      );
 
-    context.lineWidth = 5;
-    context.shadowBlur = 10;
+      const radius = Math.abs(
+        noise1D(center.x, 1, Math.min(width, height) / 20)
+      );
 
-    // Cyan triangle variation
-    context.strokeStyle = "#ff0040";
-    context.shadowColor = "#ff0040";
-    strokePath(context, [v0, v1, v2], { variance: 20 });
+      for (let a = 0; a < 100; a++) {
+        permuteNoise();
+        const angle1 = Math.abs(noise1D(a, 1, Math.PI * 2));
+        permuteNoise();
+        const angle2 = Math.abs(noise1D(a, 1, Math.PI * 2));
+        const startAngle = Math.min(angle1, angle2);
+        const endAngle = Math.max(angle1, angle2);
 
-    // Red triangle variation
-    context.strokeStyle = "#0fc";
-    context.shadowColor = "#0fc";
-    strokePath(context, [v0, v1, v2], { variance: 20 });
+        const gradient = context.createConicGradient(
+          startAngle + Math.PI / 2,
+          width / 2,
+          height / 2
+        );
+        gradient.addColorStop(0, "#fff0");
+        gradient.addColorStop(endAngle / (Math.PI * 2), "#ffff");
+        context.strokeStyle = gradient;
 
-    // White triangle
-    context.strokeStyle = "#ffffff";
-    context.shadowColor = "#ffffff";
-    strokePath(context, [v0, v1, v2]);
+        context.beginPath();
+        context.arc(
+          width / 2,
+          height / 2,
+          radius * 2 + a * 3,
+          startAngle,
+          endAngle,
+          false
+        );
+        context.stroke();
+      }
+    });
 
     context.shadowColor = null;
     context.shadowBlur = 0;
