@@ -6,10 +6,10 @@ async function fetchResult(url, options = {}) {
   return data.result;
 }
 
+// Get a random palette from the ColorMind API http://colormind.io/
 export default async function fetchRandomPalette(model = "default") {
   if (model === "random") {
     const models = await fetchResult("http://colormind.io/list/");
-    console.log(models);
     model = pick(models);
   }
 

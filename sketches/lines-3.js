@@ -1,5 +1,3 @@
-import "../utils/devtools";
-
 import canvasSketch from "canvas-sketch";
 import { noise1D, pick, permuteNoise } from "canvas-sketch-util/random";
 import fetchRandomPalette from "../utils/fetchRandomPalette";
@@ -8,7 +6,7 @@ import forEachRow from "../utils/forEachRow";
 import generateMorse from "../utils/generateMorse";
 
 const settings = {
-  dimensions: [1280, 1024],
+  dimensions: [1024, 768],
 };
 
 const sketch = async () => {
@@ -29,7 +27,7 @@ const sketch = async () => {
     context.fillStyle = "hsl(0, 0%, 98%)";
     context.fillRect(0, 0, width, height);
 
-    context.font = "26px bold sans-serif";
+    context.font = "16px bold sans-serif";
     context.textAlign = "center";
 
     const spacing = {
