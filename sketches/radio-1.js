@@ -28,25 +28,30 @@ const sketch = async () => {
       width: width - margin * 2,
       height: height - margin * 2,
     };
-
     const center = {
-      x: Math.random() * margins.width + margins.left,
-      y: Math.random() * margins.height + margins.top,
+      x: width / 2,
+      y: height / 2,
     };
 
     // Off-white background
     context.fillStyle = "hsl(0, 0%, 98%)";
     context.fillRect(0, 0, width, height);
 
+    const spacing = {
+      h: 12,
+      v: 12,
+    };
+
     let prevColorIndex = 0;
 
-    _.range(0, Math.max(width, height)).forEach((r) => {
+    // Add some varying horizontal lines
+    _.range(0, Math.min(width, height) * 0.4).forEach((r) => {
       for (let theta = 0; theta < Math.PI * 2; theta += (Math.PI * 4) / r) {
         const x = Math.cos(theta) * r + center.x;
         const y = Math.sin(theta) * r + center.y;
 
         if (
-          r % 6 === 0 &&
+          r % 12 === 0 &&
           y > margins.top &&
           y < margins.bottom &&
           x > margins.left &&
