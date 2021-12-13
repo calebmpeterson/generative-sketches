@@ -60,10 +60,12 @@ const sketch = async () => {
             context.fillStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${a})`;
 
             const radius = pick([4, 5, 6, 7]);
+
             permuteNoise();
             const vx = noise2D(x, y, 1, 3);
             permuteNoise();
             const vy = noise2D(x, y, 1, 3);
+
             drawCircle(context, x, y, radius);
             drawCircle(context, x + vx, y + vy, radius);
           }
