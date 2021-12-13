@@ -1,17 +1,11 @@
 import "../utils/devtools";
 
 import canvasSketch from "canvas-sketch";
-import {
-  noise2D,
-  pick,
-  permuteNoise,
-  weighted,
-} from "canvas-sketch-util/random";
-import _ from "lodash";
+import { noise1D, pick, permuteNoise } from "canvas-sketch-util/random";
 import fetchRandomPalette from "../utils/fetchRandomPalette";
 import forEachCol from "../utils/forEachCol";
 import forEachRow from "../utils/forEachRow";
-import drawCircle from "../utils/drawCircle";
+import generateMorse from "../utils/generateMorse";
 
 const settings = {
   dimensions: [1280, 1024],
@@ -35,37 +29,32 @@ const sketch = async () => {
     context.fillStyle = "hsl(0, 0%, 98%)";
     context.fillRect(0, 0, width, height);
 
+    context.font = "26px bold sans-serif";
+    context.textAlign = "center";
+
     const spacing = {
-      h: 16,
-      v: 16,
+      h: 10,
+      v: 4,
     };
 
-    let prevColorIndex = 0;
+    const skipCol = Math.floor(Math.random() * margins.width + margins.left);
 
     // Add some varying horizontal lines
     forEachRow(height, (y) => {
       if (y % spacing.v === 0 && y > margins.top && y < margins.bottom) {
+        const rgb = pick(palette);
+
+        permuteNoise();
+        const a = 0.75 + Math.abs(noise1D(y, 1, 0.1));
+
+        context.fillStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${a})`;
+        const text = generateMorse(100);
+
         forEachCol(width, (x) => {
           if (x % spacing.h === 0 && x > margins.left && x < margins.right) {
-            const weights = Array(palette.length).fill(1);
-            weights[prevColorIndex] = pick(_.range(50, 100));
-            const index = weighted(weights);
-            const rgb = palette[index];
-
-            prevColorIndex = index;
-
-            permuteNoise();
-            const a = 0.2 + Math.abs(noise2D(x, y, 1, 0.3));
-
-            context.fillStyle = `rgba(${rgb[0]}, ${rgb[1]}, ${rgb[2]}, ${a})`;
-
-            const radius = pick([4, 5, 6, 7]);
-            permuteNoise();
-            const vx = noise2D(x, y, 1, 3);
-            permuteNoise();
-            const vy = noise2D(x, y, 1, 3);
-            drawCircle(context, x, y, radius);
-            drawCircle(context, x + vx, y + vy, radius);
+            if (x < skipCol || x > skipCol + spacing.h) {
+              context.fillText(text[x], x, y);
+            }
           }
         });
       }
