@@ -80,16 +80,13 @@ const sketch = async () => {
 
             const vy2 = Math.sin((x * width) / focus) * 8;
 
-            context.filter = `blur(${blur}px) grayscale(${
-              unfocusFactor * 100
-            }%)`;
+            const grayscaleFactor = unfocusFactor * 100;
+            context.filter = `blur(${blur}px) grayscale(${grayscaleFactor}%)`;
             drawCircle(context, x, y + vy2, radius);
 
             permuteNoise();
             const hueRotate = Math.abs(noise2D(x, y, 1, 180));
-            context.filter = `blur(${blur}px) grayscale(${
-              unfocusFactor * 100
-            }%) hue-rotate(${hueRotate}deg)`;
+            context.filter = `blur(${blur}px) grayscale(${grayscaleFactor}%) hue-rotate(${hueRotate}deg)`;
             drawCircle(context, x + vx, y + vy + vy2, radius);
           }
         });

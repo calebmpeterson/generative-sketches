@@ -1758,6 +1758,11 @@ foreach@^2.0.5:
   resolved "https://registry.yarnpkg.com/foreach/-/foreach-2.0.5.tgz#0bee005018aeb260d0a3af3ae658dd0136ec1b99"
   integrity sha1-C+4AUBiusmDQo6865ljdATbsG5k=
 
+fractal-noise@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/fractal-noise/-/fractal-noise-1.2.0.tgz#94bedcf499874d9b5c6e418be0edc74f86dbe071"
+  integrity sha512-H1B2d45cSDSlIsy+dA5/kpiTsHG4EEGQCt9jlWXj8o4Hq0vMXQ4MEVYHJPTYU4ehaSe9NwX0j1VEMfWCcfS4UA==
+
 fragment-cache@^0.2.1:
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/fragment-cache/-/fragment-cache-0.2.1.tgz#4290fad27f13e89be7f33799c6bc5a0abfff0d19"
@@ -4483,6 +4488,11 @@ word-wrap@~1.2.3:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/word-wrap/-/word-wrap-1.2.3.tgz#610636f6b1f703891bd34771ccb17fb93b47079c"
   integrity sha512-Hz/mrNwitNRh/HUAtM/VT/5VH+ygD6DV7mYKZAtHOrbs8U7lvPS6xf7EJKMF0uW1KJCl0H701g3ZGus+muE5vQ==
+
+worleyjs@^1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/worleyjs/-/worleyjs-1.5.2.tgz#d70bfd38b9105ecdfecf8e1ed3d1d2e6badb44c1"
+  integrity sha512-lexnm31BNEilB5lG0YiSTm5m4YxzSG6hkVF5top4bKtQ0MoMaRAsJhDlHnq2yFMyIi0KJPIQ1yQDInb71OqfsQ==
 
 wrappy@1:
   version "1.0.2"
