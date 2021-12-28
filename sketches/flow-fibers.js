@@ -52,7 +52,7 @@ const sketch = async () => {
 
     // Flow field angles
     const angleNoiseFn = (x, y) => noise2D(x, y, 1, Math.PI);
-    const angleFieldFrequency = pick([0.005, 0.05, 0.5, 5, 50]);
+    const angleFieldFrequency = pick([0.005]);
     const angleFieldOctaves = pick([1, 2, 3, 4, 5, 6, 7, 8]);
     const angleField = makeRectangle(width, height, angleNoiseFn, {
       frequency: angleFieldFrequency,
@@ -100,11 +100,11 @@ const sketch = async () => {
 
     const gradeFieldFn = pick([gradeFieldFn1, gradeFieldFn2, gradeFieldFn3]);
 
-    const obstaclesToAvoid = Math.ceil(Math.random() * 50);
+    const obstaclesToAvoid = pick([103, 221]);
     const obstacles = _.range(0, obstaclesToAvoid).map((index) => ({
       x: Math.random() * width,
       y: Math.random() * height,
-      radius: Math.ceil(Math.random() * grid * 2),
+      radius: Math.ceil(Math.random() * grid * 3),
     }));
 
     // Off-white background
@@ -149,8 +149,8 @@ const sketch = async () => {
     }
 
     // Render paths through the flow field
-    const pathsToRender = 5000;
-    const stepsInPath = pick([50, 100, 250]);
+    const pathsToRender = pick([1000, 5000, 25000]);
+    const stepsInPath = pick([25, 100, 250, 500]);
     _.range(0, pathsToRender).forEach((pathIndex) => {
       // Starting point
       let x = margins.left + Math.abs(Math.random() * margins.width);
@@ -174,6 +174,9 @@ const sketch = async () => {
 
       const color = pick(palette);
       context.strokeStyle = `rgba(${color[0]}, ${color[1]}, ${color[2]}, 0.33)`;
+      context.shadowColor = `rgba(${color[0]}, ${color[1]}, ${color[2]}, 0.2)`;
+      context.shadowBlur = pick([3, 5, 7]);
+
       context.beginPath();
       context.moveTo(x, y);
       _.range(0, stepsInPath).forEach((step) => {
